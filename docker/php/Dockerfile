@@ -4,6 +4,7 @@ RUN apk update && \
     apk add --no-cache \
     postgresql-dev \
     unzip \
+    bash \
     git \
     curl \
     freetype-dev \
