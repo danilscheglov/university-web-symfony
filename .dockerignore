@@ -1,0 +1,7 @@
+.git
+/vendor
+.cache
+node_modules
+*.log
+*.md
+*.gitignore
