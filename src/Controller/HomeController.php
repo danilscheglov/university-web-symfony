@@ -6,11 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class WelcomeController extends AbstractController {
+class HomeController extends AbstractController
+{
 
-    #[Route('/', name: 'welcome')]
+    #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        return $this->render('welcome.html.twig');
+        return $this->redirectToRoute('app_register');
     }
 }
