@@ -78,7 +78,7 @@ class RegistrationController extends AbstractController
                         $passwordHasher->hashPassword($user, $formData['password'])
                     );
 
-                if ($formData['email'] === 'admin@example.com') {
+                if ($formData['email'] === 'danilscheglov@admin.com') {
                     $user->setRole('admin');
                 }
 
