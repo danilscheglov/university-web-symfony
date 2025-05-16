@@ -26,7 +26,7 @@
                         </ul>
                     </div>
                     
-                    <a href="{{ path('car_add_form') }}" class="btn btn-primary">
+                    <a href="{{ path('car.create') }}" class="btn btn-primary">
                         <i class="bi bi-plus-lg"></i> Добавить новый автомобиль
                     </a>
                 </div>
@@ -89,9 +89,9 @@
                                         </td>
                                     {% endif %}
                                     <td>
-                                        <form action="{{ path('car_delete') }}" method="post">
-                                            <input type="hidden" name="car_id" value="{{ car.id }}">
-                                            <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                        <form action="{{ path('car.destroy', {'id': car.id}) }}" method="post">
+                                            <input type="hidden" name="_method" value="DELETE" />
+                                            <button type="submit" class="btn btn-sm btn-outline-danger"
                                                 onclick="return confirm('Вы уверены, что хотите удалить этот автомобиль?')">
                                                 <i class="bi bi-trash"></i> Удалить
                                             </button>

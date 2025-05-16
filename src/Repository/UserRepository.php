@@ -32,7 +32,7 @@ class UserRepository extends ServiceEntityRepository
 
     public function remove(User $user): void
     {
-        $this->_em->remove($user);
-        $this->_em->flush();
+        $this->getEntityManager()->remove($user);
+        $this->getEntityManager()->flush();
     }
 }

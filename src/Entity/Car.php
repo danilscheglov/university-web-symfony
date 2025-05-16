@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CarRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CarRepository::class)]
@@ -119,7 +120,7 @@ class Car
         return $this->owner;
     }
 
-    public function setOwner(User $owner): self
+    public function setOwner(User|UserInterface $owner): self
     {
         $this->owner = $owner;
         return $this;
@@ -142,5 +143,16 @@ class Car
         if ($this->createdAt === null) {
             $this->createdAt = new \DateTime();
         }
+    }
+
+    public static function getColorGroups(): array
+    {
+        return [
+            'Основные цвета' => ['Белый', 'Чёрный', 'Серый', 'Красный', 'Синий', 'Зелёный'],
+            'Металлики' => ['Серебристый', 'Золотистый', 'Графитовый', 'Бронзовый', 'Платиновый'],
+            'Пастельные тона' => ['Голубой', 'Розовый', 'Мятный', 'Лавандовый', 'Персиковый'],
+            'Эксклюзивные цвета' => ['Хамелеон', 'Карбоновый', 'Жемчужный', 'Ультрамарин', 'Коралловый'],
+            'Двухцветные комбинации' => ['Чёрно-белый', 'Красно-чёрный', 'Сине-серебристый', 'Оранжево-графитовый']
+        ];
     }
 }

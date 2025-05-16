@@ -6,6 +6,7 @@ use App\Entity\Car;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class CarRepository extends ServiceEntityRepository
 {
@@ -22,7 +23,7 @@ class CarRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findCarsByOwner(User $owner): array
+    public function findCarsByOwner(User|UserInterface $owner): array
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.owner = :owner')
@@ -34,19 +35,19 @@ class CarRepository extends ServiceEntityRepository
 
     public function save(Car $car, bool $flush = true): void
     {
-        $this->_em->persist($car);
+        $this->getEntityManager()->persist($car);
 
         if ($flush) {
-            $this->_em->flush();
+            $this->getEntityManager()->flush();
         }
     }
 
     public function remove(Car $car, bool $flush = true): void
     {
-        $this->_em->remove($car);
+        $this->getEntityManager()->remove($car);
 
         if ($flush) {
-            $this->_em->flush();
+            $this->getEntityManager()->flush();
         }
     }
 }
