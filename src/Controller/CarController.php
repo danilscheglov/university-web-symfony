@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
+use App\Entity\User;
 use App\Repository\CarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,9 +24,11 @@ class CarController extends AbstractController
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        /* @var User $user */
+        $user = $this->getUser();
 
         return $this->render('car/list.html.twig', [
-            'cars' => $this->carRepository->byOwner($this->getUser()),
+            'cars' => $user->isAdmin()?$this->carRepository->findAllCars():$this->carRepository->findByOwner($user),
         ]);
     }
 

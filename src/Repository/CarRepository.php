@@ -23,7 +23,7 @@ class CarRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function byOwner(User|UserInterface $owner): array
+    public function findByOwner(User|UserInterface $owner): array
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.owner = :owner')

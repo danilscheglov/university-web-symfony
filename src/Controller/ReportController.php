@@ -136,9 +136,9 @@ class ReportController extends AbstractController {
 
         /* @var User $user */
         $user = $this->getUser();
-        $isAdmin = in_array('ROLE_ADMIN', $user->getRoles());
+        $isAdmin = $user->isAdmin();
 
-        $cars = $isAdmin?$this->carRepository->findAll():$this->carRepository->byOwner($user);
+        $cars = $isAdmin?$this->carRepository->findAll():$this->carRepository->findByOwner($user);
         $cars = array_map(function (Car $car) {
             return [
                 'brand' => $car->getBrand(),
