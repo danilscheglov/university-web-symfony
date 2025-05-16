@@ -25,7 +25,7 @@ class CarController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         return $this->render('car/list.html.twig', [
-            'cars' => $this->carRepository->findCarsByOwner($this->getUser()),
+            'cars' => $this->carRepository->byOwner($this->getUser()),
         ]);
     }
 
