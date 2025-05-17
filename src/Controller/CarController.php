@@ -21,6 +21,7 @@ class CarController extends AbstractController
     }
 
     #[Route('/', name: 'app_home', methods: ['GET'])]
+    #[Route('/car', name: 'cars.index', methods: ['GET'])]
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');

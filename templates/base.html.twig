@@ -23,10 +23,10 @@
                         </li>
                         {% if is_granted('ROLE_ADMIN') %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('admin_users') }}">Управление пользователями</a>
+                                <a class="nav-link" href="{{ path('users.index') }}">Управление пользователями</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('cars_index') }}">Управление автомобилями</a>
+                                <a class="nav-link" href="{{ path('cars.index') }}">Управление автомобилями</a>
                             </li>
                         {% endif %}
                         <li class="nav-item">

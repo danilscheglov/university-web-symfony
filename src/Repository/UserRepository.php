@@ -30,6 +30,16 @@ class UserRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+
+    public function save(User $car, bool $flush = true): void
+    {
+        $this->getEntityManager()->persist($car);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
     public function remove(User $user): void
     {
         $this->getEntityManager()->remove($user);

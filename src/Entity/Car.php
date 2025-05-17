@@ -44,9 +44,9 @@ class Car
     #[ORM\Column(type: 'integer')]
     #[Assert\NotBlank(message: "Год выпуска обязателен")]
     #[Assert\Range(
+        notInRangeMessage: "Год выпуска должен быть между {{ min }} и {{ max }}",
         min: 1900,
-        max: 2026,
-        notInRangeMessage: "Год выпуска должен быть между {{ min }} и {{ max }}"
+        max: 2026
     )]
     private int $year;
 
@@ -55,7 +55,7 @@ class Car
     private string $color;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
-    #[ORM\JoinColumn(name: 'owner_id', referencedColumnName: 'id', nullable: false)]
+    #[ORM\JoinColumn(name: 'owner_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
     private User $owner;
 
     #[ORM\Column(type: 'datetime')]
