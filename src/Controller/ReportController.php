@@ -132,8 +132,6 @@ class ReportController extends AbstractController {
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        date_default_timezone_set('Europe/Moscow');
-
         /* @var User $user */
         $user = $this->getUser();
         $isAdmin = $user->isAdmin();
